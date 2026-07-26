@@ -1,0 +1,28 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>dev.gaphunter.certcompanion</id>
+    <name>Cert Companion</name>
+    <vendor>Gap Hunter Labs</vendor>
+    <description><![CDATA[
+        <p>A native, client-side viewer for X.509 certificates and keystores —
+        <code>.pem</code>, <code>.crt</code>, <code>.cer</code>, <code>.der</code>,
+        <code>.jks</code>, <code>.p12</code>, <code>.pfx</code>. Shows subject, issuer,
+        serial number, validity (with a clear warning when a certificate is expired or
+        expiring soon), signature algorithm, SHA-256 fingerprint, and every alias in a
+        multi-entry keystore.</p>
+        <p>PEM bundles with multiple certificates are rendered one certificate at a
+        time, each with its own "Copy Raw PEM" button — no unreadable multi-cert block,
+        and a real way to copy the raw certificate content.</p>
+        <p>100% client-side, using only the JDK's own <code>java.security.KeyStore</code>
+        and <code>java.security.cert</code> APIs — no bundled crypto library, no network
+        access. Keystore passwords are only ever asked for on demand and never cached.</p>
+        <p>Free. No license nags, no telemetry, and it works correctly in both dark and
+        light themes.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileEditorProvider implementation="dev.gaphunter.certcompanion.ui.CertFileEditorProvider"/>
+    </extensions>
+</idea-plugin>
