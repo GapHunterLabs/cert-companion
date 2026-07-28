@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [0.1.1]
+
+### Added
+
+- Gap Hunter Labs brand icon (`pluginIcon.svg` / `pluginIcon_dark.svg`).
+
 ## [0.1.0]
 
 ### Added
@@ -21,3 +27,7 @@
   Keystore" button; the password is never cached longer than the
   `KeyStore.load()` call that needs it.
 - No telemetry, no license prompts, no network access.
+
+[Unreleased]: https://github.com/kendjm/cert-companion/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/kendjm/cert-companion/compare/0.1.0...0.1.1
+[0.1.0]: https://github.com/kendjm/cert-companion/commits/0.1.0
