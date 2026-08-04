@@ -63,6 +63,11 @@ plain certificates and PEM bundles, the decoded view opens immediately. For
 keystores, click "Unlock Keystore" and enter the password once; every alias
 in the keystore is then listed with its own certificate card.
 
+## Enterprise / Team Licensing
+
+Need enterprise features, custom certificate/keystore validation rules,
+or team licensing? Contact us at **kennyj.diazm@gmail.com**.
+
 ## Development
 
 ```
