@@ -66,7 +66,7 @@ in the keystore is then listed with its own certificate card.
 ## Enterprise / Team Licensing
 
 Need enterprise features, custom certificate/keystore validation rules,
-or team licensing? Contact us at **kennyj.diazm@gmail.com**.
+or team licensing? Contact us at **gaphunterlabs@gmail.com**.
 
 ## Development
 
