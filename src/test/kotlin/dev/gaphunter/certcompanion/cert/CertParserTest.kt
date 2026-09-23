@@ -7,6 +7,7 @@ import org.junit.Assert.fail
 import org.junit.BeforeClass
 import org.junit.Test
 import java.io.File
+import java.math.BigInteger
 import java.nio.file.Files
 
 /**
@@ -160,6 +161,24 @@ class CertParserTest {
     @Test(expected = Exception::class)
     fun rejectsNonCertificateContent() {
         CertParser.parseCertificateBundle("this is not a certificate".toByteArray())
+    }
+
+    @Test
+    fun formatsANegativeSerialNumberAsUnsignedHex() {
+        // A DER INTEGER is inherently signed; a serial number whose
+        // encoded high bit is set but that the issuing CA never padded
+        // with a leading 0x00 (a well-documented real-world CA bug --
+        // several public CAs have shipped certs like this) parses to a
+        // NEGATIVE BigInteger via X509Certificate.getSerialNumber().
+        // Tools like openssl display the raw octets as unsigned hex, not
+        // with a literal minus sign -- this must match that convention.
+        assertEquals("FF", CertParser.formatSerialNumber(BigInteger.valueOf(-1)))
+        assertEquals("8000", CertParser.formatSerialNumber(BigInteger.valueOf(-32768)))
+    }
+
+    @Test
+    fun formatsAPositiveSerialNumberNormally() {
+        assertEquals("7B", CertParser.formatSerialNumber(BigInteger.valueOf(123)))
     }
 
     @Test

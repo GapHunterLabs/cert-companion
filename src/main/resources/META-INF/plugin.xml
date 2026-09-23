@@ -24,5 +24,6 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileEditorProvider implementation="dev.gaphunter.certcompanion.ui.CertFileEditorProvider"/>
+        <notificationGroup id="Cert Companion" displayType="BALLOON"/>
     </extensions>
 </idea-plugin>

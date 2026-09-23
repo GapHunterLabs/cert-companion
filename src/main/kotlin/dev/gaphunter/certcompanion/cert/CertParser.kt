@@ -1,6 +1,7 @@
 package dev.gaphunter.certcompanion.cert
 
 import java.io.ByteArrayInputStream
+import java.math.BigInteger
 import java.security.KeyStore
 import java.security.MessageDigest
 import java.security.cert.CertificateFactory
@@ -96,13 +97,28 @@ object CertParser {
         return CertInfo(
             subject = cert.subjectX500Principal.name,
             issuer = cert.issuerX500Principal.name,
-            serialNumber = cert.serialNumber.toString(16).uppercase(Locale.ROOT),
+            serialNumber = formatSerialNumber(cert.serialNumber),
             notBefore = cert.notBefore,
             notAfter = cert.notAfter,
             signatureAlgorithm = cert.sigAlgName,
             sha256Fingerprint = fingerprint.joinToString(":") { "%02X".format(it) },
             pem = toPem(cert),
         )
+    }
+
+    /**
+     * A DER INTEGER is inherently signed, so a serial number whose
+     * encoded high bit is set but that the issuing CA never padded with
+     * a leading `0x00` byte (a well-documented real-world CA bug, not
+     * hypothetical) parses to a NEGATIVE [BigInteger] via
+     * `X509Certificate.getSerialNumber()`. Tools like `openssl x509
+     * -serial` show the raw octets as unsigned hex, never a literal
+     * minus sign -- reinterpreting the same two's-complement bytes as
+     * unsigned recovers exactly that.
+     */
+    fun formatSerialNumber(serial: BigInteger): String {
+        val unsigned = if (serial.signum() < 0) BigInteger(1, serial.toByteArray()) else serial
+        return unsigned.toString(16).uppercase(Locale.ROOT)
     }
 
     fun toPem(cert: X509Certificate): String {
