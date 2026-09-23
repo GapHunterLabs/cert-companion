@@ -3,6 +3,7 @@ package dev.gaphunter.certcompanion.ui
 import com.intellij.openapi.fileEditor.FileEditor
 import com.intellij.openapi.fileEditor.FileEditorState
 import com.intellij.openapi.ide.CopyPasteManager
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.UserDataHolderBase
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.JBColor
@@ -10,6 +11,7 @@ import com.intellij.ui.components.JBLabel
 import dev.gaphunter.certcompanion.cert.CertInfo
 import dev.gaphunter.certcompanion.cert.CertParser
 import dev.gaphunter.certcompanion.cert.ExpiryStatus
+import dev.gaphunter.certcompanion.review.ReviewPrompt
 import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.Font
@@ -26,7 +28,7 @@ import javax.swing.JScrollPane
 import javax.swing.SwingConstants
 import javax.swing.Timer
 
-class CertFileEditor(private val file: VirtualFile) : UserDataHolderBase(), FileEditor {
+class CertFileEditor(private val project: Project, private val file: VirtualFile) : UserDataHolderBase(), FileEditor {
 
     private val rootPanel = JPanel(BorderLayout())
 
@@ -48,6 +50,7 @@ class CertFileEditor(private val file: VirtualFile) : UserDataHolderBase(), File
                     heading to info
                 }
                 showCertificates(entries)
+                ReviewPrompt.recordHit(project)
             },
             onFailure = { showError(it.message ?: "Could not parse this file as an X.509 certificate.") },
         )
@@ -74,6 +77,7 @@ class CertFileEditor(private val file: VirtualFile) : UserDataHolderBase(), File
                     "Alias \"${entry.alias}\" ($kind)" to entry.cert
                 }
                 showCertificates(labeled)
+                ReviewPrompt.recordHit(project)
             }
         } catch (e: Exception) {
             showError(e.message ?: "Could not open this keystore.")

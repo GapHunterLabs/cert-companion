@@ -4,6 +4,24 @@
 
 ## [Unreleased]
 
+## [0.1.3]
+
+### Fixed
+
+- A certificate's serial number is now shown as unsigned hex even when
+  the issuing CA encoded it without the DER padding byte that keeps it
+  positive (a real, documented bug in some CAs' certificates, not
+  hypothetical) -- matches the convention `openssl x509 -serial` and
+  other tools use, instead of a literal minus sign.
+
+### Added
+
+- Review/star CTA: after 5 successfully decoded certificates/keystores,
+  a one-time notification asks whether to rate the plugin on
+  Marketplace, with a permanent "Don't ask again" option. Standard
+  mechanism used catalog-wide; this plugin (built before the rollout)
+  had been missed.
+
 ## [0.1.2]
 
 ### Changed
@@ -37,7 +55,8 @@
   `KeyStore.load()` call that needs it.
 - No telemetry, no license prompts, no network access.
 
-[Unreleased]: https://github.com/GapHunterLabs/cert-companion/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/GapHunterLabs/cert-companion/compare/0.1.3...HEAD
+[0.1.3]: https://github.com/GapHunterLabs/cert-companion/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/GapHunterLabs/cert-companion/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/GapHunterLabs/cert-companion/compare/0.1.0...0.1.1
 [0.1.0]: https://github.com/GapHunterLabs/cert-companion/commits/0.1.0

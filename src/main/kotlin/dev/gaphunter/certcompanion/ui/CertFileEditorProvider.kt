@@ -14,7 +14,7 @@ class CertFileEditorProvider : FileEditorProvider, DumbAware {
         file.extension?.lowercase(Locale.ROOT) in SUPPORTED_EXTENSIONS
 
     override fun createEditor(project: Project, file: VirtualFile): FileEditor =
-        CertFileEditor(file)
+        CertFileEditor(project, file)
 
     override fun getEditorTypeId(): String = "cert-companion-viewer"
 
