@@ -4,6 +4,12 @@ IntelliJ-family plugin. A native, client-side viewer for X.509 certificates
 and keystores — decode a `.pem`, `.crt`, `.cer`, `.der`, `.jks`, `.p12`, or
 `.pfx` file without leaving the IDE.
 
+![Cert Companion: Read certificates and keystores in the IDE: expiry, fingerprints, every alias](docs/media/hero.gif)
+
+Each feature on its own:
+[PEM bundles, decoded](docs/media/01-pem-bundle.gif) ·
+[Unlock a keystore](docs/media/02-keystore.gif)
+
 ## Why it exists
 
 Born from real evidence in JetBrains Marketplace reviews of a paid
