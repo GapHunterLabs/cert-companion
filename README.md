@@ -69,10 +69,12 @@ plain certificates and PEM bundles, the decoded view opens immediately. For
 keystores, click "Unlock Keystore" and enter the password once; every alias
 in the keystore is then listed with its own certificate card.
 
-## Enterprise / Team Licensing
+## Support
 
-Need enterprise features, custom certificate/keystore validation rules,
-or team licensing? Contact us at **gaphunterlabs@gmail.com**.
+- **Bugs and feature requests:** [GitHub Issues](https://github.com/GapHunterLabs/cert-companion/issues)
+- **Questions, or custom rules for a team's codebase:** **gaphunterlabs@gmail.com**
+- **Security vulnerabilities:** report privately as described in [SECURITY.md](SECURITY.md), not in a public issue.
+- **Privacy and network behavior:** [PRIVACY.md](PRIVACY.md)
 
 ## Development
 
