@@ -72,7 +72,7 @@ in the keystore is then listed with its own certificate card.
 ## Support
 
 - **Bugs and feature requests:** [GitHub Issues](https://github.com/GapHunterLabs/cert-companion/issues)
-- **Questions, or custom rules for a team's codebase:** **gaphunterlabs@gmail.com**
+- **Questions, or custom rules for a team's codebase:** **contact@gaphunterlabs.com**
 - **Security vulnerabilities:** report privately as described in [SECURITY.md](SECURITY.md), not in a public issue.
 - **Privacy and network behavior:** [PRIVACY.md](PRIVACY.md)
 
